@@ -60,4 +60,6 @@ How to Run the Project
 
 This project demonstrates the use of object-oriented programming concepts, arrays, enums, loops, and user input handling in Java. It provides a basic understanding of how simple games can be developed using core programming concepts.
 
+![Alternative text](screenshot.png)
+
 
