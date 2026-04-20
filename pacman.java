@@ -105,6 +105,38 @@ class ghost{
     }
 
 }
+class Game{
+    public  void show_grid(char[][] grid, pacman p1, ghost g){
+        for(int i=0 ; i< grid.length ; i++){
+            for(int j=0 ; j<grid[i].length ; j++){
+                if (i == g.ghost_row  &&  i == p1.pacman_row &&  j == g.ghost_column && j == p1.pacman_column){
+                    System.out.print("G");
+                }
+                if (i == p1.pacman_row && j == p1.pacman_column){
+                    System.out.print("p");
+                } else if (i== g.ghost_row && j == g.ghost_column) {
+                    System.out.print("G");
+
+                } else{
+                    System.out.print(grid[i][j]);
+                }
+            }
+            System.out.println();
+        }
+    }
+    public static  boolean remaing_dots(char[][] grid) {
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[i].length; j++) {
+                if (grid[i][j] == '.') {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+
+}
 
 
 class Main{
@@ -113,6 +145,7 @@ class Main{
 
         pacman p1 = new pacman();
         ghost g = new ghost();
+        Game ga = new Game();
         p1.grid = new char[][] {
                 {'#','#','#','#','#','#','#'},
                 {'#','.','.','.','.','.','#'},
@@ -145,7 +178,7 @@ class Main{
             g.ghost_movement(p1.grid);
             System.out.println("score is " + p1.score);
 
-            show_grid(p1.grid, p1, g);
+            ga.show_grid(p1.grid, p1, g);
             System.out.println("       ");
 
             if (g.ghost_row== p1.pacman_row && g.ghost_column == p1.pacman_column){
@@ -155,10 +188,10 @@ class Main{
                 break;
             }
 
-            if (remaing_dots(p1.grid)){
-                show_grid(p1.grid, p1, g);
+            if (ga.remaing_dots(p1.grid)){
+                ga.show_grid(p1.grid, p1, g);
                 System.out.println("congratulations you have won the game:♥♥♥♥ ♥♥ ○○YOHOOOOOOOOOO○○ ☺☻♥♥☻☺");
-                // YEH EMOJI PLAGRAIZES NAHI HAI ALT +2 = ☻   ALT+1 =☺   AND  SO ON
+
                 break;
             }
 
@@ -173,36 +206,9 @@ class Main{
 
 
     }
-    public  static void show_grid(char[][] grid, pacman p1, ghost g){
-        for(int i=0 ; i< grid.length ; i++){
-            for(int j=0 ; j<grid[i].length ; j++){
-                if (i == g.ghost_row  &&  i == p1.pacman_row &&  j == g.ghost_column && j == p1.pacman_column){
-                    System.out.print("G");
-                }
-                if (i == p1.pacman_row && j == p1.pacman_column){
-                    System.out.print("p");
-                } else if (i== g.ghost_row && j == g.ghost_column) {
-                    System.out.print("G");
-
-                } else{
-                    System.out.print(grid[i][j]);
-                }
-            }
-            System.out.println();
-        }
-    }
-
-    public static  boolean remaing_dots(char[][] grid) {
-        for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid[i].length; j++) {
-                if (grid[i][j] == '.') {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-
-
-
+    
 }
+
+
+
+
